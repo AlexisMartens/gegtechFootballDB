@@ -18,7 +18,7 @@ public interface IDAO {
     List<Club> getAllClubs();
     Club getClubById(Integer clubId);
     
-    void UpdateClub(Club club);
+    void updateClub(Club club);
     
     void deleteClub(Integer clubID);
     
