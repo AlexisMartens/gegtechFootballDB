@@ -24,7 +24,7 @@ public interface IDAO {
     void deleteClub(Integer clubID);
     
     boolean addStadion(Stadion stadion);
-    List<Stadion> getAllStadion();
+    List<Stadion> getAllStadions();
     Stadion getStadionById(Integer stadionId);
     void updateStadion(Stadion stadion);
     void deleteStadion(Integer stadionId);

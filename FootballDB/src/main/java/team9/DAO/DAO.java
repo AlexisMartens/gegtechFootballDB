@@ -17,14 +17,15 @@ public class DAO implements IDAO {
     private ClubRepository clubRepository;
     private StadionRepository stadionRepository;
     
+    
+    
+    //Methodes voor ClubRepostiroy
     @Override
     public synchronized boolean addClub(Club club){
         clubRepository.save(club);
         return false;
     }
     
-    
-    //Methodes voor ClubRepostiroy
     @Override
     public List<Club> getAllClubs() {
         List<Club> list = new ArrayList<>();
@@ -54,6 +55,12 @@ public class DAO implements IDAO {
     
     
     // methodes voor Stadion
+    @Override
+    public synchronized boolean addStadion(Stadion stadion){
+        stadionRepository.save(stadion);
+        return false;
+    }
+    
     @Override
     public List<Stadion> getAllStadions() {
         List<Stadion> list = new ArrayList<>();
