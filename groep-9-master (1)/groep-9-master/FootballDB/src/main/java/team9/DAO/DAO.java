@@ -25,6 +25,10 @@ public class DAO implements IDAO {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Club> getAllClubs() {
         List<Club> list = new ArrayList<>();
@@ -42,10 +46,12 @@ public class DAO implements IDAO {
         }
     }
     
+    @Override
     public void updateClub(Club club){
         clubRepository.save(club);
     }
     
+    @Override
     public void deleteClub(Integer clubId){
         clubRepository.delete(getClubById(clubId));
     }
