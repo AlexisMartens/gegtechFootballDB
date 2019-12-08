@@ -6,6 +6,8 @@ import team9.Repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
+import team9.FootballDB.Stadion;
+import team9.Repositories.StadionRepository;
 /**
  *
  * @author User
@@ -13,6 +15,7 @@ import java.util.List;
 public class DAO implements IDAO {
     @Autowired
     private ClubRepository clubRepository;
+    private StadionRepository stadionRepository;
     
     @Override
     public synchronized boolean addClub(Club club){
@@ -20,10 +23,8 @@ public class DAO implements IDAO {
         return false;
     }
     
-    /**
-     *
-     * @return
-     */
+    
+    //Methodes voor ClubRepostiroy
     @Override
     public List<Club> getAllClubs() {
         List<Club> list = new ArrayList<>();
@@ -49,5 +50,34 @@ public class DAO implements IDAO {
     @Override
     public void deleteClub(Integer clubId){
         clubRepository.delete(getClubById(clubId));
+    }
+    
+    
+    // methodes voor Stadion
+    @Override
+    public List<Stadion> getAllStadions() {
+        List<Stadion> list = new ArrayList<>();
+        stadionRepository.findAll().forEach(list::add);
+        return list;
+    }
+    
+    @Override
+    public Stadion getStadionById(Integer stadionId){
+        if(stadionRepository.findById(stadionId).isPresent()){
+            return stadionRepository.findById(stadionId).get();
+        }
+        else {
+            return null;
+        }
+    }
+    
+    @Override
+    public void updateStadion(Stadion stadion){
+        stadionRepository.save(stadion);
+    }
+    
+    @Override
+    public void deleteStadion(Integer stadionId){
+        stadionRepository.delete(getStadionById(stadionId));
     }
 }
