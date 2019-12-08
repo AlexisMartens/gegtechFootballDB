@@ -24,8 +24,9 @@ public class Trainer {
     @Column(name = "trainer_name")
     private String trainerName;
     
-    @OneToOne(targetEntity = Club.class)
-    @JoinColumn(name = "club_fk_trainer", nullable = false)
+    @OneToOne(targetEntity = Club.class,
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private Club club;
 
     public Integer getTrainerID() {
