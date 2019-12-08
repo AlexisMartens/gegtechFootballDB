@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -35,10 +36,14 @@ import team9.FootballDB.Stadion;
 public class Club implements Serializable {
     
     @Id
+    @Column(name="club_id")
     private int id;
+    
+    @Basic
+    @Column(name = "club_name")
     private String naam;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stadion_id")
+    
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "club", cascade = CascadeType.ALL)
     private Stadion stadion;
     
     public Club(){
