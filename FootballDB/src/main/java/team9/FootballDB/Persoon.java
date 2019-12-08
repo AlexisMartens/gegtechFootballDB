@@ -10,9 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -22,4 +24,11 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Persoon implements Serializable {
     
+    @Id
+    @GenericGenerator(name="generator", strategy ="increment")
+    @GeneratedValue(generator="generator")
+    private Integer id;
+    public int getId(){
+        return id;
+    }
 }
