@@ -26,7 +26,7 @@ import org.hibernate.annotations.GenericGenerator;
 public abstract class Persoon implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name="id", updatable = false, nullable = false)
     private Integer id;
     
