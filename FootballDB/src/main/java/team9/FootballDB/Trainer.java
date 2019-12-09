@@ -12,13 +12,9 @@ import java.util.Set;
  *
  * @author User
  */
-@Entity
-@Table(name = "trainer")
-public class Trainer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "trainer_id")
-    private Integer trainerID;
+@Entity(name="trainer")
+public class Trainer extends Persoon {
+    
     
     @Basic
     @Column(name = "trainer_name")
@@ -29,20 +25,12 @@ public class Trainer {
             cascade = CascadeType.ALL)
     private Club club;
 
-    public Integer getTrainerID() {
-        return trainerID;
-    }
-
     public String getTrainerName() {
         return trainerName;
     }
 
     public Club getClub() {
         return club;
-    }
-
-    public void setTrainerID(Integer trainerID) {
-        this.trainerID = trainerID;
     }
 
     public void setTrainerName(String trainerName) {

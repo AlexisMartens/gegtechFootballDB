@@ -15,11 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "spelers")
-public class Speler {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "speler_id")
-    private Integer spelerID;
+public class Speler extends Persoon{
     
     @Basic
     @Column(name = "speler_name")
@@ -30,20 +26,12 @@ public class Speler {
     @JoinColumn(name = "club_fk_speler", nullable = false)
     private Club club;
 
-    public Integer getSpelerID() {
-        return spelerID;
-    }
-
     public String getSpelerName() {
         return spelerName;
     }
 
     public Club getClub() {
         return club;
-    }
-
-    public void setSpelerID(Integer spelerID) {
-        this.spelerID = spelerID;
     }
 
     public void setSpelerName(String spelerName) {

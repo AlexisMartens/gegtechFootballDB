@@ -11,6 +11,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -25,10 +26,17 @@ import org.hibernate.annotations.GenericGenerator;
 public abstract class Persoon implements Serializable {
     
     @Id
-    @GenericGenerator(name="generator", strategy ="increment")
-    @GeneratedValue(generator="generator")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", updatable = false, nullable = false)
     private Integer id;
+    
     public int getId(){
         return id;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
 }
