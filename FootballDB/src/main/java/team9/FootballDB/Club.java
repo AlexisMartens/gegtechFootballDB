@@ -36,6 +36,7 @@ import team9.FootballDB.Stadion;
 public class Club implements Serializable {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="club_id")
     private int id;
     

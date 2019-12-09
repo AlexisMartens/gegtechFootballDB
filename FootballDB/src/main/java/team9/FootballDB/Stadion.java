@@ -11,6 +11,8 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -24,6 +26,7 @@ import javax.persistence.Table;
 @Table(name="stadion")
 public class Stadion implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer stadionID;
     //1 Op 1 relatie
     @OneToOne()
