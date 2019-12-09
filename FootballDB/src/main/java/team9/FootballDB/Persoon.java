@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
  *
  * @author User
  */
-@Entity
+
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Persoon implements Serializable {
     

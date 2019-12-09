@@ -36,14 +36,14 @@ import team9.FootballDB.Stadion;
 public class Club implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="club_id")
     private int id;
     
     @Basic
     @Column(name = "club_name")
     private String naam;
-    
+
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "club", cascade = CascadeType.ALL)
     private Stadion stadion;
     
@@ -67,4 +67,11 @@ public class Club implements Serializable {
         this.naam=naam;
     }
     
+    public void setStadion(Stadion stadion){
+        this.stadion = stadion;
+    }
+    
+    public Stadion getStadion(){
+        return stadion;
+    }
 }

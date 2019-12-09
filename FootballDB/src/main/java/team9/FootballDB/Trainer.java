@@ -12,7 +12,7 @@ import java.util.Set;
  *
  * @author User
  */
-@Entity
+
 @Table(name = "trainers")
 public class Trainer extends Persoon {
     

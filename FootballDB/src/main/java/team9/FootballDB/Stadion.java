@@ -26,12 +26,12 @@ import javax.persistence.Table;
 @Table(name="stadion")
 public class Stadion implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer stadionID;
     //1 Op 1 relatie
     @OneToOne()
     @MapsId
-    @JoinColumn(name="stadion_id??")
+    @JoinColumn(name="club_id")
     private Club club;
     
     @Basic
