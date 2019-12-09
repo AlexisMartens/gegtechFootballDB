@@ -6,17 +6,24 @@ import team9.Repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 import team9.FootballDB.Stadion;
 import team9.Repositories.StadionRepository;
 /**
  *
  * @author User
  */
+@Service
 public class DAO implements IDAO {
     @Autowired
     private ClubRepository clubRepository;
     private StadionRepository stadionRepository;
     
+    
+    public DAO(ClubRepository clubRepository, StadionRepository stadionRepository){
+        this.clubRepository = clubRepository;
+        this.stadionRepository = stadionRepository;
+    }
     
     
     //Methodes voor ClubRepostiroy
