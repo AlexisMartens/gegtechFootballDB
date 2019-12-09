@@ -47,6 +47,9 @@ public class Club implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "club", cascade = CascadeType.ALL)
     private Stadion stadion;
     
+    @OneToOne(mappedBy = "club")
+    private Trainer trainer;
+    
     public Club(){
         
     }
@@ -74,4 +77,13 @@ public class Club implements Serializable {
     public Stadion getStadion(){
         return stadion;
     }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+    
 }

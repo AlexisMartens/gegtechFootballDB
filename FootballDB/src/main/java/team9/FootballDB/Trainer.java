@@ -21,9 +21,9 @@ public class Trainer extends Persoon {
     @Column(name = "trainer_name")
     private String trainerName;
     
-    @OneToOne(targetEntity = Club.class,
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
+    @OneToOne()
+    @MapsId
+    @JoinColumn(name="club_id")
     private Club club;
 
     public String getTrainerName() {
