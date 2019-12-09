@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author User
  */
-
+@Entity
 @Table(name = "spelers")
 public class Speler extends Persoon{
     
