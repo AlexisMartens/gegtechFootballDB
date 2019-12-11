@@ -7,6 +7,7 @@ package team9.FootballDB;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
@@ -23,6 +24,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -54,13 +57,11 @@ public class Club implements Serializable {
     @OneToMany(mappedBy = "club")
     public List<Speler> spelers;
 
-    public List<Speler> getSpelers() {
-        return spelers;
-    }
+    @ManyToMany
+    @JoinTable(name="CLUBS_PER_COMPETITIE", joinColumns=@JoinColumn(name="club"),
+            inverseJoinColumns=@JoinColumn(name="competitie"))
+    public Set<Competitie> competities = new HashSet<>();
 
-    public void setSpelers(List<Speler> spelers) {
-        this.spelers = spelers;
-    }
     
     public Club(){
         
@@ -98,6 +99,22 @@ public class Club implements Serializable {
         this.trainer = trainer;
     }
     
+    public List<Speler> getSpelers() {
+        return spelers;
+    }
+
+    public void setSpelers(List<Speler> spelers) {
+        this.spelers = spelers;
+    }
+    
+    
+    public Set<Competitie> getCompetities() {
+        return competities;
+    }
+
+    public void setCompetities(Set<Competitie> competities) {
+        this.competities = competities;
+    }
     
     
 }
