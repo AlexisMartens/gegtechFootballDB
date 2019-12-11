@@ -6,12 +6,15 @@
 package team9.FootballDB;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,9 @@ public class Competitie implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="competitie_id")
     private Integer competitieID;
+    
+    @ManyToMany(mappedBy = "competities")
+    private Set<Club> clubs = new HashSet<>();
     
     @Basic
     @Column(name = "competitie_name")
@@ -58,5 +64,12 @@ public class Competitie implements Serializable{
         this.aantalTeams = aantalTeams;
     }
     
+    public Set<Club> getClubs() {
+        return clubs;
+    }
+
+    public void setClubs(Set<Club> clubs) {
+        this.clubs = clubs;
+    }
     
 }

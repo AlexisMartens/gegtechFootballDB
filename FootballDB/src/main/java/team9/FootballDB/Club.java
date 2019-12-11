@@ -6,6 +6,7 @@
 package team9.FootballDB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
@@ -50,6 +51,17 @@ public class Club implements Serializable {
     @OneToOne(mappedBy = "club")
     private Trainer trainer;
     
+    @OneToMany(mappedBy = "club")
+    public List<Speler> spelers;
+
+    public List<Speler> getSpelers() {
+        return spelers;
+    }
+
+    public void setSpelers(List<Speler> spelers) {
+        this.spelers = spelers;
+    }
+    
     public Club(){
         
     }
@@ -85,5 +97,7 @@ public class Club implements Serializable {
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
+    
+    
     
 }
