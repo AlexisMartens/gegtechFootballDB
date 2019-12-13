@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import team9.FootballDB.Competitie;
+import team9.FootballDB.Speler;
 import team9.FootballDB.Stadion;
+import team9.Repositories.CompetitieRepository;
+import team9.Repositories.SpelerRepository;
 import team9.Repositories.StadionRepository;
 /**
  *
@@ -18,11 +22,16 @@ public class DAO implements IDAO {
     @Autowired
     private ClubRepository clubRepository;
     private StadionRepository stadionRepository;
+    private CompetitieRepository competitieRepository;
+    private SpelerRepository spelerRepository;
     
     
-    public DAO(ClubRepository clubRepository, StadionRepository stadionRepository){
+    
+    public DAO(ClubRepository clubRepository, StadionRepository stadionRepository, CompetitieRepository competitieRepository, SpelerRepository spelerRepository){
         this.clubRepository = clubRepository;
         this.stadionRepository = stadionRepository;
+        this.competitieRepository = competitieRepository;
+        this.spelerRepository = spelerRepository;
     }
     
     
@@ -94,4 +103,73 @@ public class DAO implements IDAO {
     public void deleteStadion(Integer stadionId){
         stadionRepository.delete(getStadionById(stadionId));
     }
+    
+    //methodes voor Competitie
+    @Override
+    public synchronized boolean addCompetitie(Competitie competitie) {
+        competitieRepository.save(competitie);
+        return false;
+    }
+
+    @Override
+    public List<Competitie> getAllCompetities() {
+        List<Competitie> list = new ArrayList<>();
+        competitieRepository.findAll().forEach(list::add);
+        return list;
+    }
+
+    @Override
+    public Competitie getCompetitieById(Integer competitieId) {
+        if(competitieRepository.findById(competitieId).isPresent()){
+            return competitieRepository.findById(competitieId).get();
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public void updateCompetitie(Competitie competitie) {
+        competitieRepository.save(competitie);
+    }
+
+    @Override
+    public void deleteCompetitie(Integer competitieId) {
+        competitieRepository.delete(getCompetitieById(competitieId));
+    }
+    
+    //methodes voor Speler
+    @Override
+    public synchronized boolean addSpeler(Speler speler) {
+        spelerRepository.save(speler);
+        return false;
+    }
+
+    @Override
+    public List<Speler> getAllSpelers() {
+        List<Speler> list = new ArrayList<>();
+        spelerRepository.findAll().forEach(list::add);
+        return list;
+    }
+
+    @Override
+    public Speler getSpelerById(Integer spelerId) {
+        if(spelerRepository.findById(spelerId).isPresent()){
+            return spelerRepository.findById(spelerId).get();
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public void updateSpeler(Speler speler) {
+        spelerRepository.save(speler);
+    }
+
+    @Override
+    public void deleteSpeler(Integer spelerId) {
+        spelerRepository.delete(getSpelerById(spelerId));
+    }
+
 }

@@ -7,6 +7,8 @@ package team9.DAO;
 
 import java.util.List;
 import team9.FootballDB.Club;
+import team9.FootballDB.Competitie;
+import team9.FootballDB.Speler;
 import team9.FootballDB.Stadion;
 
 /**
@@ -28,5 +30,17 @@ public interface IDAO {
     Stadion getStadionById(Integer stadionId);
     void updateStadion(Stadion stadion);
     void deleteStadion(Integer stadionId);
+    
+    boolean addCompetitie(Competitie competitie);
+    List<Competitie> getAllCompetities();
+    Competitie getCompetitieById(Integer competitieId);
+    void updateCompetitie(Competitie competitie);
+    void deleteCompetitie(Integer competitieId);
+    
+    boolean addSpeler(Speler speler);
+    List<Speler> getAllSpelers();
+    Speler getSpelerById(Integer spelerId);
+    void updateSpeler(Speler speler);
+    void deleteSpeler(Integer spelerId);
     
 }
