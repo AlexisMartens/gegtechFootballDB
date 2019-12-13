@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team9.FootballDB;
+package team9.FootballDB.Entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import team9.FootballDB.Stadion;
+import team9.FootballDB.Entities.Stadion;
 /**
  *
  * @author User

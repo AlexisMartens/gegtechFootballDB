@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team9.Repositories;
+package team9.FootballDB.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import team9.FootballDB.Speler;
-import team9.FootballDB.Stadion;
+import team9.FootballDB.Entities.Speler;
+import team9.FootballDB.Entities.Stadion;
 
 /**
  *

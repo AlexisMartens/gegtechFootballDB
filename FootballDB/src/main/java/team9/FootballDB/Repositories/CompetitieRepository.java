@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team9.Repositories;
+package team9.FootballDB.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import team9.FootballDB.Club;
+import team9.FootballDB.Entities.Competitie;
+import team9.FootballDB.Entities.Stadion;
 
 /**
  *
- * @author alex-
+ * @author User
  */
-public interface ClubRepository extends CrudRepository<Club,Integer>{
+public interface CompetitieRepository extends CrudRepository<Competitie,Integer>{
     
 }

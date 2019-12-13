@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team9.DAO;
+package team9.FootballDB.DAO;
 
 import java.util.List;
-import team9.FootballDB.Club;
-import team9.FootballDB.Competitie;
-import team9.FootballDB.Speler;
-import team9.FootballDB.Stadion;
-import team9.FootballDB.Trainer;
+import team9.FootballDB.Entities.Club;
+import team9.FootballDB.Entities.Competitie;
+import team9.FootballDB.Entities.Speler;
+import team9.FootballDB.Entities.Stadion;
+import team9.FootballDB.Entities.Trainer;
 
 /**
  *

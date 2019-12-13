@@ -1,20 +1,20 @@
-package team9.DAO;
+package team9.FootballDB.DAO;
 
 
-import team9.FootballDB.Club;
-import team9.Repositories.ClubRepository;
+import team9.FootballDB.Entities.Club;
+import team9.FootballDB.Repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import team9.FootballDB.Competitie;
-import team9.FootballDB.Speler;
-import team9.FootballDB.Stadion;
-import team9.FootballDB.Trainer;
-import team9.Repositories.CompetitieRepository;
-import team9.Repositories.SpelerRepository;
-import team9.Repositories.StadionRepository;
-import team9.Repositories.TrainerRepository;
+import team9.FootballDB.Entities.Competitie;
+import team9.FootballDB.Entities.Speler;
+import team9.FootballDB.Entities.Stadion;
+import team9.FootballDB.Entities.Trainer;
+import team9.FootballDB.Repositories.CompetitieRepository;
+import team9.FootballDB.Repositories.SpelerRepository;
+import team9.FootballDB.Repositories.StadionRepository;
+import team9.FootballDB.Repositories.TrainerRepository;
 /**
  *
  * @author User

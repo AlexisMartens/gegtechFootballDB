@@ -1,5 +1,12 @@
 package team9.FootballDB;
 
+import team9.FootballDB.Entities.Club;
+import team9.FootballDB.Entities.Speler;
+import team9.FootballDB.Repositories.SpelerRepository;
+import team9.FootballDB.Repositories.StadionRepository;
+import team9.FootballDB.Repositories.TrainerRepository;
+import team9.FootballDB.Repositories.CompetitieRepository;
+import team9.FootballDB.Repositories.ClubRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
@@ -11,9 +18,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import team9.DAO.DAO;
-import team9.DAO.IDAO;
-import team9.Repositories.*;
+import team9.FootballDB.DAO.DAO;
+import team9.FootballDB.DAO.IDAO;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
