@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,18 @@ public class Stadion implements Serializable {
     @MapsId
     @JoinColumn(name="club_id")
     private Club club;
+    
+    @Embedded
+    private Adres adres;
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+    
     
     @Basic
     @Column(name= "stadion_name")
