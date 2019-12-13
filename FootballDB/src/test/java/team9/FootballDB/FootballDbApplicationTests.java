@@ -9,6 +9,7 @@ import team9.FootballDB.Repositories.CompetitieRepository;
 import team9.FootballDB.Repositories.ClubRepository;
 import java.util.ArrayList;
 import java.util.List;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -21,32 +22,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team9.FootballDB.DAO.DAO;
 import team9.FootballDB.DAO.IDAO;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
+
 @SpringBootTest
 class FootballDbApplicationTests {
-
-    @Mock
-    ClubRepository cr;
-    @Mock
-    CompetitieRepository compr;
-    @Mock
-    SpelerRepository sr;
-    @Mock
-    StadionRepository str;
-    @Mock
-    TrainerRepository tr;
-    
-    @InjectMocks
-    private DAO dao;
-
-    @Test
-    void contextLoads() {
-    }
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
+  
+    @Autowired
+    private IDAO dao;
 
     private Club createClub(String naam) {
         Club club = new Club();
@@ -69,9 +50,12 @@ class FootballDbApplicationTests {
         //List<Speler> spelers = new ArrayList<>();
         //spelers.add(speler);
         //club.setSpelers(spelers);
-
+        int voor = dao.getAllClubs().size();
         dao.addClub(club);
         //ao.addSpeler(speler);
+        int na = dao.getAllClubs().size();
+        Assert.assertEquals("toegevoegd", voor+1, na);
+        
     }
 
 }

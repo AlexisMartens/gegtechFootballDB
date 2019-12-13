@@ -5,6 +5,7 @@
  */
 package team9.FootballDB.Repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import team9.FootballDB.Entities.Club;
 
@@ -12,6 +13,6 @@ import team9.FootballDB.Entities.Club;
  *
  * @author alex-
  */
-public interface ClubRepository extends CrudRepository<Club,Integer>{
+public interface ClubRepository extends JpaRepository<Club,Integer>{
     
 }

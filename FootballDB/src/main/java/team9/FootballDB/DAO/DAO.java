@@ -68,7 +68,7 @@ public class DAO implements IDAO {
     
     @Override
     public void updateClub(Club club){
-        clubRepository.save(club);
+        clubRepository.saveAndFlush(club);
     }
     
     @Override
