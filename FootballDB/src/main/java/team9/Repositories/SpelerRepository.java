@@ -5,10 +5,14 @@
  */
 package team9.Repositories;
 
+import org.springframework.data.repository.CrudRepository;
+import team9.FootballDB.Speler;
+import team9.FootballDB.Stadion;
+
 /**
  *
  * @author User
  */
-public interface SpelerRepository {
+public interface SpelerRepository extends CrudRepository<Speler,Integer>{
     
 }

@@ -10,19 +10,18 @@ import team9.FootballDB.Club;
 import team9.FootballDB.Competitie;
 import team9.FootballDB.Speler;
 import team9.FootballDB.Stadion;
+import team9.FootballDB.Trainer;
 
 /**
  *
  * @author alex-
  */
 public interface IDAO {
-    boolean addClub(Club c);
     
+    boolean addClub(Club c);
     List<Club> getAllClubs();
     Club getClubById(Integer clubId);
-    
     void updateClub(Club club);
-    
     void deleteClub(Integer clubID);
     
     boolean addStadion(Stadion stadion);
@@ -42,5 +41,11 @@ public interface IDAO {
     Speler getSpelerById(Integer spelerId);
     void updateSpeler(Speler speler);
     void deleteSpeler(Integer spelerId);
+    
+    boolean addTrainer(Trainer trainer);
+    List<Trainer> getAllTrainers();
+    Trainer getTrainerById(Integer trainerId);
+    void updateTrainer(Trainer trainer);
+    void deleteTrainer(Integer trainerId);
     
 }

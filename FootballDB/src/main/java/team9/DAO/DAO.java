@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import team9.FootballDB.Competitie;
 import team9.FootballDB.Speler;
 import team9.FootballDB.Stadion;
+import team9.FootballDB.Trainer;
 import team9.Repositories.CompetitieRepository;
 import team9.Repositories.SpelerRepository;
 import team9.Repositories.StadionRepository;
+import team9.Repositories.TrainerRepository;
 /**
  *
  * @author User
@@ -24,14 +26,15 @@ public class DAO implements IDAO {
     private StadionRepository stadionRepository;
     private CompetitieRepository competitieRepository;
     private SpelerRepository spelerRepository;
+    private TrainerRepository trainerRepository;
     
     
-    
-    public DAO(ClubRepository clubRepository, StadionRepository stadionRepository, CompetitieRepository competitieRepository, SpelerRepository spelerRepository){
+    public DAO(ClubRepository clubRepository, StadionRepository stadionRepository, CompetitieRepository competitieRepository, SpelerRepository spelerRepository, TrainerRepository trainerRepository){
         this.clubRepository = clubRepository;
         this.stadionRepository = stadionRepository;
         this.competitieRepository = competitieRepository;
         this.spelerRepository = spelerRepository;
+        this.trainerRepository = trainerRepository;
     }
     
     
@@ -170,6 +173,40 @@ public class DAO implements IDAO {
     @Override
     public void deleteSpeler(Integer spelerId) {
         spelerRepository.delete(getSpelerById(spelerId));
+    }
+    
+    //methodes voor Trainer
+    @Override
+    public synchronized boolean addTrainer(Trainer trainer) {
+        trainerRepository.save(trainer);
+        return false;
+    }
+
+    @Override
+    public List<Trainer> getAllTrainers() {
+        List<Trainer> list = new ArrayList<>();
+        trainerRepository.findAll().forEach(list::add);
+        return list;
+    }
+
+    @Override
+    public Trainer getTrainerById(Integer trainerId) {
+        if(trainerRepository.findById(trainerId).isPresent()){
+            return trainerRepository.findById(trainerId).get();
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public void updateTrainer(Trainer trainer) {
+        trainerRepository.save(trainer);
+    }
+
+    @Override
+    public void deleteTrainer(Integer trainerId) {
+        trainerRepository.delete(getTrainerById(trainerId));
     }
 
 }

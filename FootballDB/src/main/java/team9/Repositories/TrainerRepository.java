@@ -6,13 +6,13 @@
 package team9.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import team9.FootballDB.Competitie;
-import team9.FootballDB.Stadion;
+import team9.FootballDB.Speler;
+import team9.FootballDB.Trainer;
 
 /**
  *
  * @author User
  */
-public interface CompetitieRepository extends CrudRepository<Competitie,Integer>{
+public interface TrainerRepository extends CrudRepository<Trainer,Integer>{
     
 }
