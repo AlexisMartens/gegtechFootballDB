@@ -29,7 +29,7 @@ public class Stadion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer stadionID;
     //1 Op 1 relatie
-    @OneToOne()
+    @OneToOne(fetch = FetchType.EAGER)
     @MapsId
     @JoinColumn(name="club_id")
     private Club club;

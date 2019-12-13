@@ -22,7 +22,7 @@ public class Speler extends Persoon{
     private String spelerName;
     
     // school is een Foreign-Key van tabel 'spelers' en verwijst naar een 'club'
-    @ManyToOne(targetEntity = Club.class)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Club.class)
     @JoinColumn(name = "club_fk_speler", nullable = false)
     private Club club;
 

@@ -54,7 +54,7 @@ public class Club implements Serializable {
     @OneToOne(mappedBy = "club")
     private Trainer trainer;
     
-    @OneToMany(mappedBy = "club")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "club")
     public List<Speler> spelers;
     
     @Embedded
@@ -127,5 +127,7 @@ public class Club implements Serializable {
         this.competities = competities;
     }
     
-    
+    public void add(Speler speler){
+        spelers.add(speler);
+    }
 }
