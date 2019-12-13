@@ -56,6 +56,9 @@ public class Club implements Serializable {
     
     @OneToMany(mappedBy = "club")
     public List<Speler> spelers;
+    
+    @Embedded
+    private Adres adres;
 
     @ManyToMany
     @JoinTable(name="CLUBS_PER_COMPETITIE", joinColumns=@JoinColumn(name="club"),
@@ -85,6 +88,14 @@ public class Club implements Serializable {
     
     public void setStadion(Stadion stadion){
         this.stadion = stadion;
+    }
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
     }
     
     public Stadion getStadion(){
