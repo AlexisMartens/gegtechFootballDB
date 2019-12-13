@@ -23,9 +23,13 @@ import team9.Repositories.TrainerRepository;
 public class DAO implements IDAO {
     @Autowired
     private ClubRepository clubRepository;
+    @Autowired
     private StadionRepository stadionRepository;
+    @Autowired
     private CompetitieRepository competitieRepository;
+    @Autowired
     private SpelerRepository spelerRepository;
+    @Autowired
     private TrainerRepository trainerRepository;
     
     
