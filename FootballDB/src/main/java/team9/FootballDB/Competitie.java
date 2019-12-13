@@ -7,6 +7,7 @@ package team9.FootballDB;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -72,5 +73,31 @@ public class Competitie implements Serializable{
     public void setClubs(Set<Club> clubs) {
         this.clubs = clubs;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.competitieID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Competitie other = (Competitie) obj;
+        if (!Objects.equals(this.competitieID, other.competitieID)) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }

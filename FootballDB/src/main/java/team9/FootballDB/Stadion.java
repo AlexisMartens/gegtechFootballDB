@@ -6,6 +6,7 @@
 package team9.FootballDB;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -90,6 +91,32 @@ public class Stadion implements Serializable {
     public void setStadion_capaciteit(Integer stadion_capaciteit) {
         this.stadion_capaciteit = stadion_capaciteit;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.stadionID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stadion other = (Stadion) obj;
+        if (!Objects.equals(this.stadionID, other.stadionID)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }
