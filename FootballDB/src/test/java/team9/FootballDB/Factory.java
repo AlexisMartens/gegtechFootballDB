@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import team9.FootballDB.DAO.IDAO;
+import team9.FootballDB.Entities.Adres;
 import team9.FootballDB.Entities.Club;
 import team9.FootballDB.Entities.Competitie;
 import team9.FootballDB.Entities.Speler;
@@ -24,6 +25,7 @@ public class Factory {
    
     private String namenClubs[] = {"Ajax","Cercle","Standard","Feynoord"};
     private String namenSpelers[] = {"Ronaldo","Messi","Neymar","Hazard"};
+    private String namenCompetities[] = {"BeNe-Liga","Liga","Premier League","Rocket League"};
     
     private Club createClub(String naam) {
         Club club = new Club();
@@ -71,4 +73,20 @@ public class Factory {
         return lijst;
     }
     
+    List<Competitie> maakCompetities(){
+        List<Competitie> lijst = new ArrayList<>();
+        for(String naam: namenCompetities){
+            lijst.add(createCompetitie(naam));
+        }
+        return lijst;
+    }
+    
+    private Adres createAdres(String straat, String huisnummer, Integer postcode, String gemeente){
+        Adres adres = new Adres();
+        adres.setGemeente(gemeente);
+        adres.setHuisnummer(huisnummer);
+        adres.setPostcode(postcode);
+        adres.setStraat(straat);
+        return adres;
+    }
 }
