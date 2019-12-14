@@ -13,6 +13,6 @@ import team9.FootballDB.Entities.Stadion;
  *
  * @author User
  */
-public interface SpelerRepository extends CrudRepository<Speler,Integer>{
+public interface SpelerRepository extends CrudRepository<Speler,Long>{
     
 }

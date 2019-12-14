@@ -20,32 +20,32 @@ public interface IDAO {
     
     boolean addClub(Club c);
     List<Club> getAllClubs();
-    Club getClubById(Integer clubId);
+    Club getClubById(Long clubId);
     void updateClub(Club club);
-    void deleteClub(Integer clubID);
+    void deleteClub(Long clubID);
     
     boolean addStadion(Stadion stadion);
     List<Stadion> getAllStadions();
-    Stadion getStadionById(Integer stadionId);
+    Stadion getStadionById(Long stadionId);
     void updateStadion(Stadion stadion);
-    void deleteStadion(Integer stadionId);
+    void deleteStadion(Long stadionId);
     
     boolean addCompetitie(Competitie competitie);
     List<Competitie> getAllCompetities();
-    Competitie getCompetitieById(Integer competitieId);
+    Competitie getCompetitieById(Long competitieId);
     void updateCompetitie(Competitie competitie);
-    void deleteCompetitie(Integer competitieId);
+    void deleteCompetitie(Long competitieId);
     
     boolean addSpeler(Speler speler);
     List<Speler> getAllSpelers();
-    Speler getSpelerById(Integer spelerId);
+    Speler getSpelerById(Long spelerId);
     void updateSpeler(Speler speler);
-    void deleteSpeler(Integer spelerId);
+    void deleteSpeler(Long spelerId);
     
     boolean addTrainer(Trainer trainer);
     List<Trainer> getAllTrainers();
-    Trainer getTrainerById(Integer trainerId);
+    Trainer getTrainerById(Long trainerId);
     void updateTrainer(Trainer trainer);
-    void deleteTrainer(Integer trainerId);
+    void deleteTrainer(Long trainerId);
     
 }

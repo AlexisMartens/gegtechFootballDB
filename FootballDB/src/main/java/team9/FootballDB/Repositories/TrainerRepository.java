@@ -13,6 +13,6 @@ import team9.FootballDB.Entities.Trainer;
  *
  * @author User
  */
-public interface TrainerRepository extends CrudRepository<Trainer,Integer>{
+public interface TrainerRepository extends CrudRepository<Trainer,Long>{
     
 }

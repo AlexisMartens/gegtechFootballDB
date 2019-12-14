@@ -13,6 +13,6 @@ import team9.FootballDB.Entities.Stadion;
  *
  * @author User
  */
-public interface CompetitieRepository extends CrudRepository<Competitie,Integer>{
+public interface CompetitieRepository extends CrudRepository<Competitie,Long>{
     
 }

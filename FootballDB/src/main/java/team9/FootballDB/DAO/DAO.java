@@ -57,7 +57,7 @@ public class DAO implements IDAO {
     }
     
     @Override
-    public Club getClubById(Integer clubId){
+    public Club getClubById(Long clubId){
         if(clubRepository.findById(clubId).isPresent()){
             return clubRepository.findById(clubId).get();
         }
@@ -68,11 +68,11 @@ public class DAO implements IDAO {
     
     @Override
     public void updateClub(Club club){
-        clubRepository.saveAndFlush(club);
+        clubRepository.save(club);
     }
     
     @Override
-    public void deleteClub(Integer clubId){
+    public void deleteClub(Long clubId){
         clubRepository.delete(getClubById(clubId));
     }
     
@@ -92,7 +92,7 @@ public class DAO implements IDAO {
     }
     
     @Override
-    public Stadion getStadionById(Integer stadionId){
+    public Stadion getStadionById(Long stadionId){
         if(stadionRepository.findById(stadionId).isPresent()){
             return stadionRepository.findById(stadionId).get();
         }
@@ -107,7 +107,7 @@ public class DAO implements IDAO {
     }
     
     @Override
-    public void deleteStadion(Integer stadionId){
+    public void deleteStadion(Long stadionId){
         stadionRepository.delete(getStadionById(stadionId));
     }
     
@@ -126,7 +126,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public Competitie getCompetitieById(Integer competitieId) {
+    public Competitie getCompetitieById(Long competitieId) {
         if(competitieRepository.findById(competitieId).isPresent()){
             return competitieRepository.findById(competitieId).get();
         }
@@ -141,7 +141,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public void deleteCompetitie(Integer competitieId) {
+    public void deleteCompetitie(Long competitieId) {
         competitieRepository.delete(getCompetitieById(competitieId));
     }
     
@@ -160,7 +160,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public Speler getSpelerById(Integer spelerId) {
+    public Speler getSpelerById(Long spelerId) {
         if(spelerRepository.findById(spelerId).isPresent()){
             return spelerRepository.findById(spelerId).get();
         }
@@ -175,7 +175,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public void deleteSpeler(Integer spelerId) {
+    public void deleteSpeler(Long spelerId) {
         spelerRepository.delete(getSpelerById(spelerId));
     }
     
@@ -194,7 +194,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public Trainer getTrainerById(Integer trainerId) {
+    public Trainer getTrainerById(Long trainerId) {
         if(trainerRepository.findById(trainerId).isPresent()){
             return trainerRepository.findById(trainerId).get();
         }
@@ -209,7 +209,7 @@ public class DAO implements IDAO {
     }
 
     @Override
-    public void deleteTrainer(Integer trainerId) {
+    public void deleteTrainer(Long trainerId) {
         trainerRepository.delete(getTrainerById(trainerId));
     }
 

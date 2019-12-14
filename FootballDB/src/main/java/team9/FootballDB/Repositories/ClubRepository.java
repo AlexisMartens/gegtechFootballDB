@@ -13,6 +13,6 @@ import team9.FootballDB.Entities.Club;
  *
  * @author alex-
  */
-public interface ClubRepository extends JpaRepository<Club,Integer>{
+public interface ClubRepository extends CrudRepository<Club,Long>{
     
 }
