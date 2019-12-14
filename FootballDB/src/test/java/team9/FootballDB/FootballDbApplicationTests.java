@@ -43,18 +43,19 @@ class FootballDbApplicationTests {
 
     @Test
     void TestAddingClub() {
-        //IDAO dao = new DAO() --> hebben repositories nodig...
+        
         Club club = createClub("Ajax");
-        //Speler speler = createSpeler("Tadic");
-        //speler.setClub(club);
-        //List<Speler> spelers = new ArrayList<>();
-        //spelers.add(speler);
-        //club.setSpelers(spelers);
+        Speler speler = createSpeler("Tadic");
+        speler.setClub(club);
+        List<Speler> spelers = new ArrayList<>();
+        spelers.add(speler);
+        club.setSpelers(spelers);
         int voor = dao.getAllClubs().size();
         dao.addClub(club);
-        //ao.addSpeler(speler);
+        dao.addSpeler(speler);
         int na = dao.getAllClubs().size();
         Assert.assertEquals("toegevoegd", voor+1, na);
+        
         
     }
 

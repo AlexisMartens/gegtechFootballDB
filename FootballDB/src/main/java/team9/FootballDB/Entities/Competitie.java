@@ -29,7 +29,7 @@ public class Competitie implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="competitie_id")
-    private Integer competitieID;
+    private Long competitieID;
     
     @ManyToMany(mappedBy = "competities")
     private Set<Club> clubs = new HashSet<>();
@@ -42,7 +42,7 @@ public class Competitie implements Serializable{
     @Column(name = "competitie_aantal")
     private Integer aantalTeams;
 
-    public Integer getCompetitieID() {
+    public Long getCompetitieID() {
         return competitieID;
     }
 
@@ -54,7 +54,7 @@ public class Competitie implements Serializable{
         return aantalTeams;
     }
 
-    public void setCompetitieID(Integer competitieID) {
+    public void setCompetitieID(Long competitieID) {
         this.competitieID = competitieID;
     }
 

@@ -29,7 +29,7 @@ import javax.persistence.Table;
 public class Stadion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer stadionID;
+    private Long stadionID;
     //1 Op 1 relatie
     @OneToOne(fetch = FetchType.EAGER)
     @MapsId
@@ -60,7 +60,7 @@ public class Stadion implements Serializable {
         
     }
 
-    public Integer getStadionID() {
+    public Long getStadionID() {
         return stadionID;
     }
 
@@ -76,7 +76,7 @@ public class Stadion implements Serializable {
         return stadion_capaciteit;
     }
 
-    public void setStadionID(Integer stadionID) {
+    public void setStadionID(Long stadionID) {
         this.stadionID = stadionID;
     }
 

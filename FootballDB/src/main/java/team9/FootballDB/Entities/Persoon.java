@@ -29,13 +29,13 @@ public abstract class Persoon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name="id", updatable = false, nullable = false)
-    private Integer id;
+    private Long id;
     
-    public int getId(){
+    public Long getId(){
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

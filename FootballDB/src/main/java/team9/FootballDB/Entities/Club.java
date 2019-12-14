@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -42,7 +43,7 @@ public class Club implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="club_id")
-    private int id;
+    private Long id;
     
     @Basic
     @Column(name = "club_name")
@@ -68,11 +69,11 @@ public class Club implements Serializable {
         
     }
     
-    public int getId(){
+    public Long getId(){
         return id;
     }
     
-    public void setId(int id){
+    public void setId(Long id){
         this.id = id;
     }
     
@@ -124,9 +125,11 @@ public class Club implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.id;
+        hash = 31 * hash + Objects.hashCode(this.id);
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {
