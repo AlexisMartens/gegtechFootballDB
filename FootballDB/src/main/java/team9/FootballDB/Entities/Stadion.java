@@ -20,22 +20,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 /**
  *
  * @author User
  */
 @Entity
-@Table(name="stadion")
+@Table(name = "stadion")
 public class Stadion implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stadionID;
     //1 Op 1 relatie
     @OneToOne(fetch = FetchType.EAGER)
     @MapsId
-    @JoinColumn(name="club_id")
+    @JoinColumn(name = "club_id")
     private Club club;
-    
+
+    @Basic
+    @Column(name = "stadion_name")
+    private String stadionName;
+
     @Embedded
     private Adres adres;
 
@@ -46,18 +52,13 @@ public class Stadion implements Serializable {
     public void setAdres(Adres adres) {
         this.adres = adres;
     }
-    
-    
+
     @Basic
-    @Column(name= "stadion_name")
-    private String stadionName;
-    
-    @Basic
-    @Column(name= "stadion_capaciteit")
+    @Column(name = "stadion_capaciteit")
     private Integer stadion_capaciteit;
 
-    public Stadion(){
-        
+    public Stadion() {
+
     }
 
     public Long getStadionID() {
@@ -116,7 +117,5 @@ public class Stadion implements Serializable {
         }
         return true;
     }
-    
-    
-    
+
 }

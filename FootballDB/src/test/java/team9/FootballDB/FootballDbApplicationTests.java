@@ -43,23 +43,36 @@ class FootballDbApplicationTests {
 
     @Test
     void TestAddingClub() {
-        
         Club club = createClub("Ajax");
-        Speler speler = createSpeler("Tadic");
-        speler.setClub(club);
-        List<Speler> spelers = new ArrayList<>();
-        spelers.add(speler);
-        club.setSpelers(spelers);
         int voor = dao.getAllClubs().size();
         dao.addClub(club);
-        dao.addSpeler(speler);
         int na = dao.getAllClubs().size();
         Assert.assertEquals("toegevoegd", voor+1, na);
         
         
-        
-        
-        
+    }
+    
+    @Test
+    void testGettingClub(){
+        Club club = createClub("Beveren");
+        dao.addClub(club);
+        Club c = dao.getClubById(club.getId());
+        Assert.assertTrue("opgehaalde club is gelijk", club.equals(c));
+    }
+    
+    @Test
+    void testAddingSpeler(){
+        Club club = createClub("Cercle");
+        Speler speler = createSpeler("Hazard");
+        speler.setClub(club);
+        List<Speler> spelers = new ArrayList<>();
+        spelers.add(speler);
+        club.setSpelers(spelers);
+        int voor = dao.getAllSpelers().size();
+        dao.addClub(club);
+        dao.addSpeler(speler);
+        int na = dao.getAllSpelers().size();
+        Assert.assertEquals("toegevoegd", voor+1, na);
         
     }
 
