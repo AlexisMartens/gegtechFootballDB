@@ -6,7 +6,9 @@
 package team9.FootballDB;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import team9.FootballDB.DAO.IDAO;
@@ -27,61 +29,61 @@ public class Factory {
     private String namenSpelers[] = {"Ronaldo","Messi","Neymar","Hazard"};
     private String namenCompetities[] = {"BeNe-Liga","Liga","Premier League","Rocket League"};
     
-    private Club createClub(String naam) {
+    public Club createClub(String naam) {
         Club club = new Club();
         club.setNaam(naam);
         return club;
     }
 
-    private Speler createSpeler(String naam) {
+    public Speler createSpeler(String naam) {
         Speler speler = new Speler();
         speler.setSpelerName(naam);
         return speler;
     }
     
-    private Competitie createCompetitie(String naam){
+    public Competitie createCompetitie(String naam){
         Competitie competitie = new Competitie();
         competitie.setCompetitieName(naam);
         return competitie;
     }
     
-    private Stadion createStadion(String naam){
+    public Stadion createStadion(String naam){
         Stadion stadion = new Stadion();
         stadion.setStadionName(naam);
         return stadion;
     }
     
-    private Trainer createTrainer(String naam){
+    public Trainer createTrainer(String naam){
         Trainer trainer = new Trainer();
         trainer.setTrainerName(naam);
         return trainer;
     }
     
-    List<Club> maakClubs(){
-        List<Club> lijst = new ArrayList<>();
+    Set<Club> maakClubs(){
+        Set<Club> lijst = new HashSet<>();
         for(String naam: namenClubs){
             lijst.add(createClub(naam));
         }
         return lijst;
     }
     
-    List<Speler> maakSpelers(){
-        List<Speler> lijst = new ArrayList<>();
+    Set<Speler> maakSpelers(){
+        Set<Speler> lijst = new HashSet<>();
         for(String naam: namenSpelers){
             lijst.add(createSpeler(naam));
         }
         return lijst;
     }
     
-    List<Competitie> maakCompetities(){
-        List<Competitie> lijst = new ArrayList<>();
+    Set<Competitie> maakCompetities(){
+        Set<Competitie> lijst = new HashSet<>();
         for(String naam: namenCompetities){
             lijst.add(createCompetitie(naam));
         }
         return lijst;
     }
     
-    private Adres createAdres(String straat, String huisnummer, Integer postcode, String gemeente){
+    public Adres createAdres(String straat, String huisnummer, Integer postcode, String gemeente){
         Adres adres = new Adres();
         adres.setGemeente(gemeente);
         adres.setHuisnummer(huisnummer);
