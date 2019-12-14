@@ -59,7 +59,7 @@ public class Factory {
         return trainer;
     }
     
-    Set<Club> maakClubs(){
+    public Set<Club> maakClubs(){
         Set<Club> lijst = new HashSet<>();
         for(String naam: namenClubs){
             lijst.add(createClub(naam));
@@ -67,7 +67,7 @@ public class Factory {
         return lijst;
     }
     
-    Set<Speler> maakSpelers(){
+    public Set<Speler> maakSpelers(){
         Set<Speler> lijst = new HashSet<>();
         for(String naam: namenSpelers){
             lijst.add(createSpeler(naam));
@@ -75,7 +75,7 @@ public class Factory {
         return lijst;
     }
     
-    Set<Competitie> maakCompetities(){
+    public Set<Competitie> maakCompetities(){
         Set<Competitie> lijst = new HashSet<>();
         for(String naam: namenCompetities){
             lijst.add(createCompetitie(naam));
