@@ -36,6 +36,6 @@ public class SpelerTest {
     @After
     public void tearDown() {
     }
-
+    
     
 }

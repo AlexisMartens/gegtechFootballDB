@@ -136,4 +136,18 @@ class FootballDbApplicationTests {
         int aantal = dao.getAllClubs().size();
         Assert.assertEquals("toegevoegd", voor-1, aantal);
     }
+    
+    @Test
+    void testCascade(){
+        Club club = f.createClub("Cercle");
+        Stadion stadion = f.createStadion("Lotto");
+        club.setStadion(stadion);
+        stadion.setClub(club);
+        int voor = dao.getAllStadions().size();
+        dao.addClub(club);
+        dao.addStadion(stadion);
+        dao.deleteClub(club.getId());
+        int na = dao.getAllStadions().size();
+        Assert.assertEquals("Cascade",voor, na);
+    }
 }
