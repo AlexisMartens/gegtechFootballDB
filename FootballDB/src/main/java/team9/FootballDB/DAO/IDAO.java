@@ -6,6 +6,7 @@
 package team9.FootballDB.DAO;
 
 import java.util.List;
+import java.util.Set;
 import team9.FootballDB.Entities.Club;
 import team9.FootballDB.Entities.Competitie;
 import team9.FootballDB.Entities.Speler;
@@ -52,5 +53,8 @@ public interface IDAO {
     void updateTrainer(Trainer trainer);
     void deleteTrainer(Long trainerId);
     void addTrainers(List<Trainer> trainer);
+    
+    //parameter methode
+    Set<Club> getClubsByName(String naam);
     
 }

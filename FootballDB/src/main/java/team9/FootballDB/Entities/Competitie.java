@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Competitie implements Serializable{
     @Column(name="competitie_id")
     private Long competitieID;
     
-    @ManyToMany(mappedBy = "competities")
+    @ManyToMany(mappedBy = "competities", cascade = CascadeType.ALL)
     private Set<Club> clubs = new HashSet<>();
     
     @Basic

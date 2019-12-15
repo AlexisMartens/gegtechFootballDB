@@ -6,6 +6,7 @@ import team9.FootballDB.Repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Service;
 import team9.FootballDB.Entities.Competitie;
 import team9.FootballDB.Entities.Speler;
@@ -40,7 +41,6 @@ public class DAO implements IDAO {
         this.spelerRepository = spelerRepository;
         this.trainerRepository = trainerRepository;
     }
-    
     
     //Methodes voor ClubRepostiroy
     @Override
@@ -241,6 +241,14 @@ public class DAO implements IDAO {
         for(Trainer t: lijst){
             addTrainer(t);
         }
+    }
+    
+    
+    //parameter methode
+
+    @Override
+    public Set<Club> getClubsByName(String naam) {
+        return clubRepository.findAllClubsWithName(naam);
     }
     
  

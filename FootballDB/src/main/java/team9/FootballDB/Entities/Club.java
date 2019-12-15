@@ -52,14 +52,14 @@ public class Club implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "club", cascade = CascadeType.ALL)
     private Stadion stadion;
     
-    @OneToOne(mappedBy = "club")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "club", cascade = CascadeType.ALL)
     private Trainer trainer;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "club")
     public List<Speler> spelers;
     
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name="CLUBS_PER_COMPETITIE", joinColumns=@JoinColumn(name="club"),
             inverseJoinColumns=@JoinColumn(name="competitie"))
     public Set<Competitie> competities = new HashSet<>();
@@ -100,7 +100,7 @@ public class Club implements Serializable {
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
-    
+
     public List<Speler> getSpelers() {
         return spelers;
     }

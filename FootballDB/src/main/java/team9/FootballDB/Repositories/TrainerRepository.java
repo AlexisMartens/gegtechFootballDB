@@ -5,6 +5,7 @@
  */
 package team9.FootballDB.Repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import team9.FootballDB.Entities.Speler;
 import team9.FootballDB.Entities.Trainer;

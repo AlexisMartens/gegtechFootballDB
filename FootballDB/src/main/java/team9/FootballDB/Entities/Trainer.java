@@ -21,9 +21,8 @@ public class Trainer extends Persoon {
     @Column(name = "trainer_name")
     private String trainerName;
     
-    @OneToOne()
-    @MapsId
-    @JoinColumn(name="club_id")
+    @OneToOne(fetch = FetchType.LAZY, optional=true, cascade = CascadeType.ALL)
+    @JoinColumn(name="club_id", nullable=false, unique =true, updatable = false)
     private Club club;
 
     public String getTrainerName() {
