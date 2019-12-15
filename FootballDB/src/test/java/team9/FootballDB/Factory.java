@@ -67,8 +67,8 @@ public class Factory {
         return lijst;
     }
     
-    public Set<Speler> maakSpelers(){
-        Set<Speler> lijst = new HashSet<>();
+    public List<Speler> maakSpelers(){
+        List<Speler> lijst = new ArrayList<>();
         for(String naam: namenSpelers){
             lijst.add(createSpeler(naam));
         }

@@ -150,4 +150,19 @@ class FootballDbApplicationTests {
         int na = dao.getAllStadions().size();
         Assert.assertEquals("Cascade",voor, na);
     }
+    
+    @Test
+    void testAddingList(){
+        List<Speler> lijst = f.maakSpelers();
+        Club c = f.createClub("Real Madrid");
+        for(Speler s : lijst){
+            s.setClub(c);
+        }
+        c.setSpelers(lijst);
+        int voor = dao.getAllSpelers().size();
+        dao.addClub(c);
+        dao.addSpelers(lijst);
+        int na = dao.getAllSpelers().size();
+        Assert.assertEquals("Meerdere spelers toegevoegd",voor+lijst.size(), na);
+    }
 }
