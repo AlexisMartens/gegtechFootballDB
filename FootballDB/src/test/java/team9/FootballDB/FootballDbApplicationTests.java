@@ -187,9 +187,9 @@ class FootballDbApplicationTests {
         Assert.assertEquals("Meerdere spelers toegevoegd",voor+lijst.size(), na);
     }
     
-    /* werkt niet
+    
     @Test
-    void testNotCascade(){
+    void testCascade2(){
         Club club = f.createClub("Zulte");
         Trainer trainer = f.createTrainer("Pico Coppens");
         club.setTrainer(trainer);
@@ -197,18 +197,16 @@ class FootballDbApplicationTests {
         int voor = dao.getAllTrainers().size();
         dao.addClub(club);
         //dao.addTrainer(trainer);
-        dao.flush();
-        dao.deleteClub(club.getId());
         int na = dao.getAllTrainers().size();
-        Assert.assertEquals("Cascade",voor, na);
+        Assert.assertEquals("Cascade",voor+1, na);
     }
-    */
+    
     
     @Test
     public void testUpdateClubToCompetite(){
         Club club = f.createClub("Eupen");
         Competitie competitie = f.createCompetitie("ESDL");
-        Set<Competitie> competities = new HashSet<>();
+        List<Competitie> competities = new ArrayList<>();
         //Set<Club> clubs = new HashSet<>();
         //clubs.add(club);
         competities.add(competitie);
@@ -218,7 +216,7 @@ class FootballDbApplicationTests {
         dao.addCompetitie(competitie);
         Competitie c = dao.getCompetitieById(competitie.getCompetitieID());
         Club club2 = f.createClub("Moeskroen");
-        Set<Club> clubs2 = c.getClubs();
+        List<Club> clubs2 = c.getClubs();
         clubs2.add(club2);
         dao.updateCompetitie(c);
         int na = clubs2.size();
@@ -229,14 +227,14 @@ class FootballDbApplicationTests {
     public void testUpdateExtraCompetitie(){
         Club club = f.createClub("Eupen");
         Competitie competitie = f.createCompetitie("JPL");
-        Set<Competitie> comps = new HashSet<>();
+        List<Competitie> comps = new ArrayList<>();
         comps.add(competitie);
         club.setCompetities(comps);
         dao.addClub(club);
         //dao.addCompetitie(competitie); //cascade
         Club c = dao.getClubById(club.getId());
         Competitie comp2 = f.createCompetitie("Beker");
-        Set<Competitie> comps2 = c.getCompetities();
+        List<Competitie> comps2 = c.getCompetities();
         comps2.add(comp2);
         dao.updateClub(c);
         int aantalcomp = dao.getClubById(c.getId()).getCompetities().size();
@@ -249,5 +247,36 @@ class FootballDbApplicationTests {
         dao.addClub(c);
         Set<Club> set = dao.getClubsByName("Chelsea");
         Assert.assertEquals("parameter query gelukt", 1 , set.size());
+    }
+    
+    @Test
+    void testAlles(){
+        Club az = f.createClub("AZ");
+        List<Competitie> s = f.maakCompetities();
+        List<Club> set = new ArrayList<>();
+        set.add(az);
+        for(Competitie comp: s){
+            comp.setClubs(set);
+        }
+        az.setCompetities(s);
+        
+        Trainer t = f.createTrainer("Arne Slot");
+        t.setClub(az);
+        Stadion st = f.createStadion("AFAS Stadion");
+        Adres a = f.createAdres("kaas", "8", 9012, "Alkmaar");
+        st.setAdres(a);
+        List<Speler> spelers = f.maakSpelers();
+        for(Speler sp : spelers){
+            sp.setClub(az);
+        }
+        az.setTrainer(t);
+        az.setStadion(st);
+        st.setClub(az);
+        dao.addClub(az);
+        dao.addSpelers(spelers);
+        /*
+        for(Competitie comp: s){
+            dao.addCompetitie(comp);
+        }*/
     }
 }

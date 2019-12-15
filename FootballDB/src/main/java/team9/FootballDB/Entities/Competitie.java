@@ -7,6 +7,7 @@ package team9.FootballDB.Entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -33,7 +34,7 @@ public class Competitie implements Serializable{
     private Long competitieID;
     
     @ManyToMany(mappedBy = "competities", cascade = CascadeType.ALL)
-    private Set<Club> clubs = new HashSet<>();
+    private List<Club> clubs;
     
     @Basic
     @Column(name = "competitie_name")
@@ -66,12 +67,12 @@ public class Competitie implements Serializable{
     public void setAantalTeams(Integer aantalTeams) {
         this.aantalTeams = aantalTeams;
     }
-    
-    public Set<Club> getClubs() {
+
+    public List<Club> getClubs() {
         return clubs;
     }
 
-    public void setClubs(Set<Club> clubs) {
+    public void setClubs(List<Club> clubs) {
         this.clubs = clubs;
     }
 

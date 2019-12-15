@@ -75,8 +75,8 @@ public class Factory {
         return lijst;
     }
     
-    public Set<Competitie> maakCompetities(){
-        Set<Competitie> lijst = new HashSet<>();
+    public List<Competitie> maakCompetities(){
+        List<Competitie> lijst = new ArrayList<>();
         for(String naam: namenCompetities){
             lijst.add(createCompetitie(naam));
         }

@@ -62,7 +62,7 @@ public class Club implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name="CLUBS_PER_COMPETITIE", joinColumns=@JoinColumn(name="club"),
             inverseJoinColumns=@JoinColumn(name="competitie"))
-    public Set<Competitie> competities = new HashSet<>();
+    public List<Competitie> competities;
 
     
     public Club(){
@@ -108,13 +108,12 @@ public class Club implements Serializable {
     public void setSpelers(List<Speler> spelers) {
         this.spelers = spelers;
     }
-    
-    
-    public Set<Competitie> getCompetities() {
+
+    public List<Competitie> getCompetities() {
         return competities;
     }
 
-    public void setCompetities(Set<Competitie> competities) {
+    public void setCompetities(List<Competitie> competities) {
         this.competities = competities;
     }
     

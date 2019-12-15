@@ -8,6 +8,7 @@ package team9.FootballDB.Entities;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
@@ -38,7 +39,7 @@ public class Stadion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stadionID;
     //1 Op 1 relatie
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "club_id")
     private Club club;
