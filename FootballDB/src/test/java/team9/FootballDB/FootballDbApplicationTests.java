@@ -22,6 +22,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team9.FootballDB.DAO.DAO;
 import team9.FootballDB.DAO.IDAO;
+import team9.FootballDB.Entities.Adres;
+import team9.FootballDB.Entities.Stadion;
 
 
 @SpringBootTest
@@ -82,8 +84,47 @@ class FootballDbApplicationTests {
         if(lijst == null){
             System.out.println("is null");
         }
-        Assert.assertTrue("lazy fetching", !Hibernate.isInitialized(c.getSpelers()));
-        
+        Assert.assertTrue("lazy fetching", !Hibernate.isInitialized(c.getSpelers()));  
     }
-
+    
+    @Test
+    void testNotLazyFetching(){
+        Club club = f.createClub("Cercle Brugge");
+        Stadion stadion = f.createStadion("Jan Breyde");
+        stadion.setClub(club);
+        dao.addClub(club);
+        dao.addStadion(stadion);
+        Club c = dao.getClubById(club.getId());
+        Assert.assertTrue("lazy fetching", !Hibernate.isInitialized(c.getStadion()));
+    }
+    
+    @Test
+    void testValueObject(){
+        Stadion stadion = f.createStadion("Jan Breyde");
+        Adres adres = f.createAdres("Straat","4",9000,"Brugge");
+        stadion.setAdres(adres);
+        dao.addStadion(stadion);
+        //Hoe kunnen we da nu testen??        
+    }
+    
+    @Test
+    void testUpdateClub(){
+        Club club = f.createClub("Cercle");
+        dao.addClub(club);
+        Club c = dao.getClubById(club.getId());
+        c.setNaam("Ajax");
+        dao.updateClub(c);
+        Assert.assertEquals("Update club", "Ajax", c.getNaam());
+    }
+    
+    @Test
+    void testVerwijderClub(){
+        Club club = f.createClub("Cercle");
+        Club club2 = f.createClub("Ajax");
+        dao.addClub(club);
+        dao.addClub(club2);
+        dao.deleteClub(club.getId());
+        int aantal = dao.getAllClubs().size();
+        Assert.assertEquals("toegevoegd", 1, aantal);
+    }
 }
