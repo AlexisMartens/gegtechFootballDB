@@ -44,9 +44,8 @@ public class DAO implements IDAO {
     
     //Methodes voor ClubRepostiroy
     @Override
-    public synchronized boolean addClub(Club club){
+    public synchronized void addClub(Club club){
         clubRepository.save(club);
-        return false;
     }
     
     @Override
@@ -79,9 +78,8 @@ public class DAO implements IDAO {
     
     // methodes voor Stadion
     @Override
-    public synchronized boolean addStadion(Stadion stadion){
+    public synchronized void addStadion(Stadion stadion){
         stadionRepository.save(stadion);
-        return false;
     }
     
     @Override
@@ -113,9 +111,8 @@ public class DAO implements IDAO {
     
     //methodes voor Competitie
     @Override
-    public synchronized boolean addCompetitie(Competitie competitie) {
+    public synchronized void addCompetitie(Competitie competitie) {
         competitieRepository.save(competitie);
-        return false;
     }
 
     @Override
@@ -147,9 +144,8 @@ public class DAO implements IDAO {
     
     //methodes voor Speler
     @Override
-    public synchronized boolean addSpeler(Speler speler) {
+    public synchronized void addSpeler(Speler speler) {
         spelerRepository.save(speler);
-        return false;
     }
 
     @Override
@@ -181,9 +177,8 @@ public class DAO implements IDAO {
     
     //methodes voor Trainer
     @Override
-    public synchronized boolean addTrainer(Trainer trainer) {
+    public synchronized void addTrainer(Trainer trainer) {
         trainerRepository.save(trainer);
-        return false;
     }
 
     @Override
@@ -213,4 +208,40 @@ public class DAO implements IDAO {
         trainerRepository.delete(getTrainerById(trainerId));
     }
 
+    @Override
+    public void addClubs(List<Club> lijst) {
+        for(Club c : lijst){
+            addClub(c);
+        }
+    }
+
+    @Override
+    public void addStadions(List<Stadion> lijst) {
+        for(Stadion s : lijst){
+            addStadion(s);
+        }
+    }
+
+    @Override
+    public void addCompetities(List<Competitie> lijst) {
+        for(Competitie c : lijst){
+            addCompetitie(c);
+        }
+    }
+
+    @Override
+    public void addSpelers(List<Speler> lijst) {
+        for(Speler s: lijst){
+            addSpeler(s);
+        }
+    }
+
+    @Override
+    public void addTrainers(List<Trainer> lijst) {
+        for(Trainer t: lijst){
+            addTrainer(t);
+        }
+    }
+
+    
 }

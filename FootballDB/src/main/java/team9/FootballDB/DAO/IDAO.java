@@ -18,34 +18,39 @@ import team9.FootballDB.Entities.Trainer;
  */
 public interface IDAO {
     
-    boolean addClub(Club c);
+    void addClub(Club c);
     List<Club> getAllClubs();
     Club getClubById(Long clubId);
     void updateClub(Club club);
     void deleteClub(Long clubID);
+    void addClubs(List<Club> c);
     
-    boolean addStadion(Stadion stadion);
+    void addStadion(Stadion stadion);
     List<Stadion> getAllStadions();
     Stadion getStadionById(Long stadionId);
     void updateStadion(Stadion stadion);
     void deleteStadion(Long stadionId);
+    void addStadions(List<Stadion> stadion);
     
-    boolean addCompetitie(Competitie competitie);
+    void addCompetitie(Competitie competitie);
     List<Competitie> getAllCompetities();
     Competitie getCompetitieById(Long competitieId);
     void updateCompetitie(Competitie competitie);
     void deleteCompetitie(Long competitieId);
+    void addCompetities(List<Competitie> competitie);
     
-    boolean addSpeler(Speler speler);
+    void addSpeler(Speler speler);
     List<Speler> getAllSpelers();
     Speler getSpelerById(Long spelerId);
     void updateSpeler(Speler speler);
     void deleteSpeler(Long spelerId);
+    void addSpelers(List<Speler> speler);
     
-    boolean addTrainer(Trainer trainer);
+    void addTrainer(Trainer trainer);
     List<Trainer> getAllTrainers();
     Trainer getTrainerById(Long trainerId);
     void updateTrainer(Trainer trainer);
     void deleteTrainer(Long trainerId);
+    void addTrainers(List<Trainer> trainer);
     
 }
