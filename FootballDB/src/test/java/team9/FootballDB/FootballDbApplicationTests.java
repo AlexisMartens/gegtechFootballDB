@@ -89,13 +89,14 @@ class FootballDbApplicationTests {
     
     @Test
     void testNotLazyFetching(){
-        Club club = f.createClub("Cercle Brugge");
-        Stadion stadion = f.createStadion("Jan Breyde");
+        Club club = f.createClub("Ajax");
+        Stadion stadion = f.createStadion("Johan Cruyff Stadion");
         stadion.setClub(club);
+        club.setStadion(stadion);
         dao.addClub(club);
         dao.addStadion(stadion);
         Club c = dao.getClubById(club.getId());
-        Assert.assertTrue("lazy fetching", !Hibernate.isInitialized(c.getStadion()));
+        Assert.assertTrue("lazy fetching", Hibernate.isInitialized(c.getStadion()));
     }
     
     @Test
@@ -103,8 +104,14 @@ class FootballDbApplicationTests {
         Stadion stadion = f.createStadion("Jan Breyde");
         Adres adres = f.createAdres("Straat","4",9000,"Brugge");
         stadion.setAdres(adres);
+        Club c = f.createClub("Cercle");
+        stadion.setClub(c);
+        c.setStadion(stadion);
         dao.addStadion(stadion);
-        //Hoe kunnen we da nu testen??        
+        dao.addClub(c);
+        Stadion st = dao.getStadionById(stadion.getStadionID());
+        Adres a = st.getAdres();
+        Assert.assertTrue("adressen zijn gelijk", a.equals(adres));
     }
     
     @Test
@@ -114,7 +121,8 @@ class FootballDbApplicationTests {
         Club c = dao.getClubById(club.getId());
         c.setNaam("Ajax");
         dao.updateClub(c);
-        Assert.assertEquals("Update club", "Ajax", c.getNaam());
+        Club test = dao.getClubById(c.getId());
+        Assert.assertEquals("Update club", "Ajax", test.getNaam());
     }
     
     @Test
@@ -123,8 +131,9 @@ class FootballDbApplicationTests {
         Club club2 = f.createClub("Ajax");
         dao.addClub(club);
         dao.addClub(club2);
+        int voor = dao.getAllClubs().size();
         dao.deleteClub(club.getId());
         int aantal = dao.getAllClubs().size();
-        Assert.assertEquals("toegevoegd", 1, aantal);
+        Assert.assertEquals("toegevoegd", voor-1, aantal);
     }
 }

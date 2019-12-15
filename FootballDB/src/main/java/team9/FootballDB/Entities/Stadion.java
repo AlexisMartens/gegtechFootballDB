@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.springframework.lang.Nullable;
 
 /**
  *
@@ -29,6 +30,10 @@ import javax.persistence.Table;
 @Table(name = "stadion")
 public class Stadion implements Serializable {
 
+    @Basic
+    @Column(name = "stadion_name")
+    private String stadionName;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stadionID;
@@ -37,10 +42,6 @@ public class Stadion implements Serializable {
     @MapsId
     @JoinColumn(name = "club_id")
     private Club club;
-
-    @Basic
-    @Column(name = "stadion_name")
-    private String stadionName;
 
     @Embedded
     private Adres adres;

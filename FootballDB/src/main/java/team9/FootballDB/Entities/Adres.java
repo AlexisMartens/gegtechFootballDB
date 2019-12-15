@@ -6,6 +6,7 @@
 package team9.FootballDB.Entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Embeddable;
 
 /**
@@ -50,4 +51,43 @@ public class Adres implements Serializable {
     public void setStraat(String straat) {
         this.straat = straat;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.straat);
+        hash = 97 * hash + Objects.hashCode(this.huisnummer);
+        hash = 97 * hash + Objects.hashCode(this.postcode);
+        hash = 97 * hash + Objects.hashCode(this.gemeente);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Adres other = (Adres) obj;
+        if (!Objects.equals(this.straat, other.straat)) {
+            return false;
+        }
+        if (!Objects.equals(this.huisnummer, other.huisnummer)) {
+            return false;
+        }
+        if (!Objects.equals(this.gemeente, other.gemeente)) {
+            return false;
+        }
+        if (!Objects.equals(this.postcode, other.postcode)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
