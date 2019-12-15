@@ -8,7 +8,9 @@ import team9.FootballDB.Repositories.TrainerRepository;
 import team9.FootballDB.Repositories.CompetitieRepository;
 import team9.FootballDB.Repositories.ClubRepository;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import junit.framework.Assert;
 import org.hibernate.Hibernate;
 import org.junit.Before;
@@ -23,7 +25,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team9.FootballDB.DAO.DAO;
 import team9.FootballDB.DAO.IDAO;
 import team9.FootballDB.Entities.Adres;
+import team9.FootballDB.Entities.Competitie;
 import team9.FootballDB.Entities.Stadion;
+import team9.FootballDB.Entities.Trainer;
 
 
 @SpringBootTest
@@ -164,5 +168,55 @@ class FootballDbApplicationTests {
         dao.addSpelers(lijst);
         int na = dao.getAllSpelers().size();
         Assert.assertEquals("Meerdere spelers toegevoegd",voor+lijst.size(), na);
+    }
+    
+    @Test
+    void testNotCascade(){
+        Club club = f.createClub("Zulte");
+        Trainer trainer = f.createTrainer("Pico Coppens");
+        club.setTrainer(trainer);
+        trainer.setClub(club);
+        int voor = dao.getAllTrainers().size();
+        dao.addClub(club);
+        dao.addTrainer(trainer);
+        dao.deleteClub(club.getId());
+        int na = dao.getAllTrainers().size();
+        Assert.assertEquals("Cascade",voor+1, na);
+    }
+    
+    @Test
+    public void testAddClubToCompetite(){
+        Club club = f.createClub("Eupen");
+        Competitie competitie = f.createCompetitie("JPL");
+        Set<Club> clubs = new HashSet<>();
+        clubs.add(club);
+        competitie.setClubs(clubs);
+        dao.addClub(club);
+        dao.addCompetitie(competitie);
+        Competitie c = dao.getCompetitieById(competitie.getCompetitieID());
+        Club club2 = f.createClub("Moeskroen");
+        Set<Club> clubs2 = c.getClubs();
+        clubs2.add(club2);
+        dao.updateCompetitie(c);
+        int na = clubs2.size();
+        Assert.assertEquals("Cascade",2, na);
+    }
+    
+    @Test
+    public void testCompetitie(){
+        Club club = f.createClub("Eupen");
+        Competitie competitie = f.createCompetitie("JPL");
+        Set<Competitie> comps = new HashSet<>();
+        comps.add(competitie);
+        club.setCompetities(comps);
+        dao.addClub(club);
+        dao.addCompetitie(competitie);
+        Club c = dao.getClubById(club.getId());
+        Competitie comp2 = f.createCompetitie("Beker");
+        Set<Competitie> comps2 = c.getCompetities();
+        comps2.add(comp2);
+        dao.updateClub(c);
+        int na = comps2.size();
+        Assert.assertEquals("Cascade",2, na);
     }
 }

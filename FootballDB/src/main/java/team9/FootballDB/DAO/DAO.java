@@ -242,6 +242,6 @@ public class DAO implements IDAO {
             addTrainer(t);
         }
     }
-
     
+ 
 }
